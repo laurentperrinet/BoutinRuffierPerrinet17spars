@@ -1,0 +1,211 @@
+% !TEX root = BoutinRuffierPerrinet17spars_poster.tex
+%!TeX TS-program = Lualatex
+%!TeX encoding = UTF-8 Unicode
+%!TeX spellcheck = en-US
+%!BIB TS-program = bibtex
+% -*- coding: UTF-8; -*-
+% vim: set fenc=utf-8
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\Draft{1}%
+\def\Draft{0}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --------------------------------------------------------------------------
+%                    METADATA
+% --------------------------------------------------------------------------
+\newcommand{\AuthorA}{Boutin}%
+\newcommand{\FirstNameA}{Victor}%
+\newcommand{\AuthorB}{Ruffier}%
+\newcommand{\FirstNameB}{Franck}%
+\newcommand{\AuthorC}{Perrinet}%
+\newcommand{\FirstNameC}{Laurent U}%
+\newcommand{\InstituteA}{Aix Marseille Univ, CNRS, INT, Inst Neurosciences Timone, Marseille, France}%
+\newcommand{\InstituteB}{Aix Marseille Univ, CNRS, ISM, Inst Movement Sci, Marseille, France}%
+\newcommand{\InstituteC}{Aix Marseille Univ, CNRS, INT, Inst Neurosciences Timone, Marseille, France}%{Institut de Neurosciences de la Timone\\  (UMR7289) \\ CNRS / Aix-Marseille 
+\newcommand{\AddressC}{27, Bd. Jean Moulin, 13385 Marseille Cedex 5, France}%
+\newcommand{\WebsiteC}{http://invibe.net/LaurentPerrinet}%
+\newcommand{\EmailA}{victor.boutin@univ-amu.fr}%
+\newcommand{\EmailB}{franck.ruffier@univ-amu.fr}%
+\newcommand{\EmailC}{laurent.perrinet@univ-amu.fr}%victor.boutin@univ-amu.fr
+\newcommand{\Title}{Efficient learning of sparse image representations using homeostatic regulation}%
+\newcommand{\Abstract}{
+One core advantage of sparse representations is the efficient coding of complex signals using compact codes. For instance, it allows for the representation of any sample as a combination of few elements drawn from a large dictionary of basis functions. In the context of the efficient processing of natural images, we propose here that sparse coding can be optimized by designing a proper homeostatic rule regulating the competition between the elements of the dictionary. Indeed, a common design for unsupervised learning rules relies on a gradient descent over a cost measuring representation quality with respect to sparseness. The sparseness constraint introduces a competition which can be optimized by ensuring that each item in the dictionary is selected as often as others. We implemented this rule by introducing a gain normalisation similar to what is observed in biological neural networks. We validated this theoretical insight by challenging the matching pursuit sparse coding algorithm with the same learning rule but with or without homeostasis. Simulations show that for a given homeostasis rule, gradient descent performed similarly the learning of a dataset of image patches. While the coding accuracy did not vary much, including homeostasis changed qualitatively the learned features. In particular, homeostasis results in a more homogeneous set of orientation selective filters, which is closer to what is found in the visual cortex of mammals. To further validate these results, we will apply this algorithm to the optimisation of a visual system to be embedded in an aerial robot. In summary, this biologically-inspired learning rule demonstrates that principles observed in neural computations can help improve real-life machine learning algorithms. 
+ %The different sparse coding algorithms were chosen for their efficiency and generality. They include least-angle regression, orthogonal matching pursuit and basis pursuit. 
+}
+\newcommand{\Conference}{Presented Thursday, June 8 2017 at {\bf SPARS 2017} at the {\it Signal Processing with Adaptive Sparse Structured Representations} (SPARS) workshop, Lisbon, Portugal}%
+\newcommand{\Keywords}{Retina, Sparseness, Computer vision, Aerial robot, Neuroscience}%
+\newcommand{\Acknowledgments}{%
+This work was supported by ANR project ANR-13-APPR-0008 "ANR R.E.M." and the Doc2Amu project which received funding from a co-fund with the European Union's Horizon 2020 research and innovation programme and the region Provence Alpes Cote d'Azur. }
+\newcommand{\Links}{%
+\begin{itemize}
+\item Correspondence and requests for materials should be addressed to LUP (email:\EmailC ). 
+
+\item Code and supplementary material available at \url{\WebsiteC/Publications/BoutinRuffierPerrinet17spars}.
+\end{itemize}
+} %
+
+
+%\newcommand{\imsize}{0.45\columnwidth}
+%\begin{figure}
+%\begin{center}
+%\begin{tabular}{c c}
+%{\resizebox{\imsize}{!}{\includegraphics{blocks1}}} &
+%{\resizebox{\imsize}{!}{\includegraphics{blocks2}}}\\
+%(a) & (b) \\
+%{\resizebox{\imsize}{!}{\includegraphics{blocks3}}} &
+%{\resizebox{\imsize}{!}{\includegraphics{blocks1a}}}\\
+%(c) & (d) \\
+%\end{tabular}
+%\end{center}
+%\caption{ Parts (a) through (c) show three images consisting of squares of
+%different sizes;
+%(d) shows the pattern spectra, denoting the number of foreground pixels 
+% removed by openings by reconstruction by $\lambda \times \lambda$ squares. No 
+%granulometry is capable of separating the patterns, because the only 
+%differences between the images lie in the distributions of the 
+%connected components. }\label{fig:blocks}
+%\end{figure}
+
+\newcommand{\FigureMap}{%
+%------------------------------%
+%: see Figure~\ref{fig:homeostasis}
+\begin{figure}%[!ht]%%[p!]
+\centering{
+\begin{tikzpicture}
+\draw [anchor=north west] (0, .9\linewidth) node {\includegraphics[width=.75\linewidth]{ssc_nohomeo}};
+\draw [anchor=north west] (0, 0) node {\includegraphics[width=.75\linewidth]{ssc_homeo}};
+\draw (0, .9\linewidth) node [above right=0mm] {$\mathsf{A}$};
+\draw (0, .0\linewidth) node [above right=0mm] {$\mathsf{B}$};
+\end{tikzpicture}}
+\caption{
+{\bf Role of homeostasis in learning sparse representations}: 
+We show the results of Sparse Hebbian Learning using two different homeostasis algorithms at convergence (20000 learning steps). 324 filters of the same size as the image patches ($16 \times 16$) are presented in a matrix (separated by a white border). Note that their position in the matrix is arbitrary as in ICA. {\sf (A)} When switching off the cooperative homeostasis during learning, the corresponding Sparse Hebbian Learning algorithm converges to a set of filters that contains some less localized filters and some high-frequency Gabor functions that correspond to more ``textural'' features. One may wonder if these filters are inefficient and capturing noise or if they rather correspond to independent features of natural images in the LGM model. {\sf (B)} Results with the same coding and learning algorithm but by enabling homeostasis. % 
+\label{fig:map}}%
+\end{figure}%
+%%------------------------------%
+}%
+\newcommand{\FigureQuant}{%
+%------------------------------%
+%: see Figure~\ref{fig:homeostasis}
+\begin{figure}[!ht]%%[p!]
+\centering{
+\begin{tikzpicture}
+\draw [anchor=north west] (0, .8\linewidth) node {\includegraphics[width=\linewidth]{PDF_nohomeo}};
+\draw [anchor=north west] (0, .4\linewidth) node {\includegraphics[width=\linewidth]{z_score}};
+\draw [anchor=north west] (0, .0) node {\includegraphics[width=\linewidth]{PDF_homeo}};
+\draw (0, .7\linewidth) node [above right=0mm] {$\mathsf{A}$};
+\draw (0, .3\linewidth) node [above right=0mm] {$\mathsf{B}$};
+\draw (0, -.1\linewidth) node [above right=0mm] {$\mathsf{C}$};
+\end{tikzpicture}}
+\caption{
+{\bf Quantitative role of homeostasis in sparse coding}: We show the results of Sparse Coding using the two different homeostasis algorithms using surrogate data where each filter was equiprobable but for which we manipulated the first half of the coefficients to be artificially twice as big. %
+{\sf (A)}~Such a situation replicates a situation arising during learning when a sub-group of filters is more active, e.~g. because it learned more salient features.  Here, we show the probability of the selection of the different filters (normalized to an average of $1$) which shows a bias of the standard Matching Pursuit to select more often filters whose activity is higher. %We evaluated the efficiency of retrieving the correct coefficients to about $\ %
+{\sf (B)}~Non-linear homeostatic functions learned using Hebbian learning. These functions were initialized as the cumulative distribution function of uniform random variables. Then they are used to modify choices in the Matching step of the Matching Pursuit algorithm. Progressively, the non-linear functions converge to the (hidden) cumulative distributions of the coefficients of the surrogate, clearly showing the group of filters with twice a big coefficients. 
+ {\sf (C)}~At convergence, the probability of choosing any filter is uniform. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
+\label{fig:quant}}%
+\end{figure}%
+%%------------------------------%
+}%
+
+\newcommand{\FigureMNIST}{%
+%------------------------------%
+%: see Figure~\ref{fig:homeostasis}
+\begin{figure}[!ht]%%[p!]
+\centering{
+\begin{tikzpicture}
+\draw [anchor=north west] (0, .39\linewidth) node {\includegraphics[width=.47\linewidth]{dico_MP}};
+\draw [anchor=north west] (.5\linewidth, .39\linewidth) node {\includegraphics[width=.47\linewidth]{dico_SN}};
+\draw [anchor=north west] (.25\linewidth, -.1\linewidth) node {\includegraphics[width=.47\linewidth]{dico_MEUL}};
+\draw [anchor=north west] (.1\linewidth, -.6\linewidth) node {\includegraphics[width=.8\linewidth]{Comparison_reconstruction}};
+\draw (0, .39\linewidth) node [above right=0mm] {$\mathsf{A}$};
+\draw (.5\linewidth, .39\linewidth) node [above right=0mm] {$\mathsf{B}$};
+\draw (.2\linewidth, -.16\linewidth) node [above right=0mm] {$\mathsf{C}$};
+\draw (.05\linewidth, -.67\linewidth) node [above right=0mm] {$\mathsf{D}$};
+\end{tikzpicture}}
+\caption{
+{\bf Quantitative role of homeostasis in a classification network}: We used the generic MNIST protocol to assess the role of the homeostasis algorithm on classification. %
+ {\sf (A-C)}~144 dictionaries learned from the MNIST database with a sparseness of 5 after 10000 iterations with {\sf (A)}~MP Algorithm ($\eta=0.01$): No homeostasis regulation, only a small subset of dictionaries are selected with a high probability to describe the dataset.
+{\sf (B)}~SPARSENET Algorithm ($\eta=0.01$, $\eta_h=0.01$, $\alpha_h=0.02$): The homeostasis regulation is made by normalizing the volatility.
+{\sf (C)}~MEUL Algorithm ($\eta=0.01$, $\eta_h=0.01$): All dictionaries are selected with the same probability to describe the dataset, leading to a cooperative learning.
+ {\sf (D)}~Comparison of the reconstruction error (computed as the square root of the squared difference between the image and the residual) for the 3 algorithms (MEUL, SPARSENET, MP): The convergence velocity of MEUL is higher than SPARSENET and MP.
+\label{fig:quant}}%
+\end{figure}%
+%%------------------------------%
+}%
+
+
+\newcommand{\coef}{\mathbf{a}} % image's hidden param
+\newcommand{\image}{\mathbf{I}} % the image
+\newcommand{\dico}{\Phi} % the dictionary
+
+
+\newcommand{\ParagIntro}{%
+It is observed that simple cell neurones in mammalian primary visual cortex are selective to orientation, spatial localisation, and frequencies~\citep{hubel1968receptive}. It is demonstrated that developing a coding strategy that maximises sparseness is sufficient to form receptive fields that account for all three of the above properties~\citep{olshausen1996emergence}. Visual items composing natural images are often sparse, such that the brain may use this sparseness to reconstruct images with only a few set of these items~\citep{Perrinet10shl,Perrinet15bicv}. This is supporting the idea that an unsupervised learning algorithm based on sparse coding could be use to describe efficiently image processing in the primary visual cortex. Llearning is accomplished in {\sc SparseNet}~\citep{Olshausen97} on patches taken from natural images as a sequence of coding and learning steps. First, knowing a dictionary of receptive fields $\dico_i$, the sparse coding is achieved using a gradient descent over a convex cost derived from a sparse prior probability distribution function of the coefficients $a_i$, where we use the generic $\ell_0$ norm sparseness, by simply counting the number of non-zero coefficients:
+\begin{equation}%
+\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
+\end{equation}%
+During the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation.%
+}%
+
+\newcommand{\SparseCost}{%
+Knowing a dictionary of receptive fields $\dico_i$~\citep{hubel1968receptive}, we achieve sparse coding using a gradient descent~\citep{olshausen1996emergence,Olshausen97} over a  cost derived from a sparse prior probability distribution function of the coefficients $a_i$, where we use the generic $\ell_0$ norm sparseness~\citep{Perrinet10shl,Perrinet15sparse}, by simply counting the number of non-zero coefficients:
+\begin{equation}%
+\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
+\end{equation}%
+During the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. In particular, we will set the a priori probability of selecting coefficients $\forall i,j, P(\coef_i)=P(\coef_j)$ and compare it to the representation in the primary visual cortex.%
+}%
+
+\newcommand{\Algorithm}{%
+The proposed algorithm is:
+\begin{enumerate}%
+{\color{MidnightBlue} 
+\item Initialize the point non-linear gain functions $z_i$ to similar cumulative distribution functions and the components $\dico_i$ to random points on the unit $L$-dimensional sphere,%
+\item repeat until learning converged:%
+\begin{enumerate}%
+{\color{OliveGreen}
+	\item draw a signal $\image$ from the database, its energy is $E = \| \image \|^2$,%
+	\item set sparse vector $\coef$ to zero, initialize $\bar{a}_i=<\image, \dico_i >$ for all $i$,% using~\seeEq{coco},%
+	\item while the residual energy $E$ is above a given threshold do:
+	\begin{enumerate}
+		{\color{BrickRed}
+			\item select the best match: $i^\ast = \mbox{ArgMax}_{i} [z_i( \bar{a}_i )]$,% with~\seeEq{mp1},
+		}
+		\item set the sparse coefficient: $a_{i^\ast} = \bar{a}_{i^\ast}$,
+		\item update residual coefficients: $\forall i, \bar{a}_i \leftarrow \bar{a}_i - a_{i^\ast} <\dico_{i^\ast} , \dico_i > $,% for all $i$ using~\seeEq{mp3},
+		\item update energy: $E \leftarrow E - a_{i^\ast}^2 $.
+	\end{enumerate}
+}
+\item when we have the sparse representation vector $\coef$, apply $\forall i$:
+\begin{enumerate}
+\item modify dictionary: $\dico_{i} \leftarrow \dico_{i} + \eta a_{i} (\image - \dico\coef)$,% using~\seeEq{learn}, 
+\item normalize dictionary: $\dico_{i} \leftarrow \dico_{i} / \| \dico_{i}\|$,% using~\seeEq{learn}, 
+\item update homeostasis functions: $z_i( \cdot ) \leftarrow (1- \eta_h ) z_i( \cdot ) + \eta_h \delta( a_i \leq \cdot)$.% using~\seeEq{learn_homeo}
+\end{enumerate}
+\end{enumerate}
+}
+\end{enumerate}
+}%
+
+\newcommand{\ParagLongIntro}{%
+It is observed that simple cell neurones in mammalian primary visual cortex are selective to orientation, spatial localisation, and frequencies~\citep{hubel1968receptive}. It is demonstrated that developing a coding strategy that maximises sparseness is sufficient to form receptive fields that account for all three of the above properties~\citep{olshausen1996emergence}. Visual items composing natural images are often sparse, such that the brain may use this sparseness to reconstruct images with only a few set of these items~\citep{Perrinet15bicv}. This is supporting the idea that an unsupervised learning algorithm based on sparse coding could be use to describe efficiently image processing in the primary visual cortex.
+
+Most of existing models of unsupervised learning aim at optimising a cost defined on prior assumptions on representation's sparseness. For instance, learning is accomplished in {\sc SparseNet}~\citep{Olshausen97} on patches taken from natural images as a sequence of coding and learning steps. First, knowing a dictionary of receptive fields $\dico_i$, the sparse coding is achieved using a gradient descent over a convex cost derived from a sparse prior probability distribution function of the coefficients $a_i$. Then, knowing this sparse solution, learning is defined as slowly changing the dictionary using Hebbian learning. In general, the parameterisation of the prior has major impacts on results of the sparse coding and thus on the emergence of edge-like receptive fields and requires proper tuning. In fact, the definition of the prior corresponds to an objective sparseness and does not always fit to the observed probability distribution function of the coefficients. In particular, this could be a problem \emph{during} learning if we use the cost to measure representation efficiency for this learning step. An alternative is to use a more generic $\ell_0$ norm sparseness, by simply counting the number of non-zero coefficients:
+\begin{equation}%
+\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
+\end{equation}%
+It was found that by using an algorithm like Matching Pursuit, the learning algorithm could provide results similar to {\sc SparseNet}, but without the need of parametric assumptions on the prior~\citep{Perrinet10shl}. However, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously. In particular, during the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation.%
+
+To achieve this, we first formulate analytically the problem of representation efficiency in a population of sensory neurones. For the particular $\ell_0$ norm sparseness, we show that sparseness is optimal, in term of Shannon entropy, when average activity within the neural population is uniformly balanced (i.e. each neurone is selected with the same probability when encoding a large set of data). To achieve this uniformity, we define an homeostatic gain control mechanism based on histogram equalisation, that is in transforming coefficients in terms of z-scores $z_i(a_i) = P( \cdot > a_i)$. The cumulative distribution $z_i$ for each coefficient of the sparse vector is calculated using Hebbian learning to smooth its evolution during learning. At the coding level, this z-score function is incorporated in the matching step of the matching pursuit algorithm, to modulate the choice of the most  as that with the maximal z-score: $i^\ast = \mathrm{Argmax}_i z_i(a_i)$. The rest of the algorithm is left unchanged.
+
+We compared qualitatively the set $\dico$ of receptive filters generated by the proposed algorithm when the homeostasis is first turned-off and then enabled  (see Fig.~\ref{fig:map}). A more quantitative study of the coding is shown by comparing selection distribution of sparse coefficients when the homeostasis mechanism is turned on (see Fig.~\ref{fig:quant}). We demonstrate that forcing the learning activity to be uniformly spread among all receptive fields results in a faster convergence of the representation error, and in an increase of the Shanon entropy. Finally, an interesting perspective is to apply the homeostatic regulation algorithm in a classical fully connected deep-learning neural network and applied on the MNIST recognition task. By using the sparse coefficients as the input layer of the network, we can compare the performance obtained with and without the homeostatic mechanism. Preliminary results show that the improvement in efficiency is more acute when using sparse representations (5 out of 324 coefficients).
+}%
+%2. importance of homeo - vanishing term in deep learning -> use deep learning to validate output
+%3. application to asynchronous / focal  log-polar (retinal) input / continuous learning / credit assignement (no access to true residual)
+
+%To further validate these results, we applied this algorithm to the optimization of a visual system embedded in an aerial robot. Indeed, such robots have an increasing demand for visual applications, such as computation of optic flow for flight stabilization or for common visual categorization tasks such as recognition of pilot's gestures. However, embedding such a system is often difficult as it necessitates to be rapid,  energy efficient and lightweight. We resolved this problem by introducing our novel algorithm as an output of our visual sensors (the ``retina''). Results were collected by comparing the image reconstruction error for different information bandwidths in the output bus of this retina.Quantitative results show that the quality of the reconstruction was improved in our algorithm on a  database of natural, flying videos of the aerial robot.In particular, this algorithm provides with a real-life example showing how to improve our understanding of the emergence of edge-selective simple cells, drawing the bridge between structure (representation) and function (efficient coding).% 
+%
+%[1] :
+%Hubel DH, Wiesel TN. Receptive fields and functional architecture of monkey striate cortex. J Physiol. 1968;195:215?243
+%[2] : 
+%Olshausen BA, and Field DJ. (1996). "Emergence of Simple-Cell Receptive Field Properties by Learning a Sparse Code for Natural Images." Nature, 381: 607-609. [PDF]
+%[3] :
+%L. U. Perrinet, ?Sparse models for computer vision?, in Biolog- ically Inspired Computer Vision, G. Cristo?bal, L. Perrinet, and M. S. Keil, Eds., Wiley-VCH Verlag GmbH & Co. KGaA, 2015, ch. 13.

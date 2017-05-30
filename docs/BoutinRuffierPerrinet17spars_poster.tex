@@ -1,0 +1,212 @@
+%!TeX TS-program = Lualatex
+%!TeX encoding = UTF-8 Unicode
+%!TeX spellcheck = en-US
+%!BIB TS-program = bibtex
+% -*- coding: UTF-8; -*-
+% vim: set fenc=utf-8
+%  Important: maximum poster size: 180cm x 120cm (width x height)  is within the A0 paper size, an international ISO 216 standard paper size (841 × 1189 mm), which results in an area of approximately 1 m²
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{BoutinRuffierPerrinet17}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\if 1\Draft
+\documentclass[8pt, landscape,draft]{sciposter}
+\else
+\documentclass[8pt, landscape]{sciposter}
+\fi
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multicol}
+%\documentclass[a4paper, 11pt]{article} % For LaTeX2e
+%\usepackage{times}
+\usepackage[utf8]{luainputenc}
+%============ common ===================
+\usepackage[english]{babel}%
+%\usepackage{csquotes}%
+\usepackage[autostyle]{csquotes}
+%% Sans-serif Arial-like fonts
+\renewcommand{\rmdefault}{phv} 
+\renewcommand{\sfdefault}{phv} 
+     \usepackage{textcomp}
+     \usepackage{libertine}%[sb]
+     \usepackage[varqu,varl]{inconsolata}% sans serif typewriter
+     \usepackage[libertine,bigdelims,vvarbb]{newtxmath} % bb from STIX
+     \usepackage[cal=boondoxo]{mathalfa} % mathcal
+%     \useosf % osf for text, not math
+     \usepackage[supstfm=libertinesups,%
+       supscaled=1.2,%
+       raised=-.13em]{superiors}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{venetianred}{rgb}{0.78, 0.03, 0.08}
+%\usepackage{hyperref}       % hyperlinks
+\usepackage[unicode,linkcolor=blue,citecolor=blue,filecolor=black,urlcolor=blue,pdfborder={0 0 0}]{hyperref}%
+\hypersetup{%
+pdftitle={\Title},%
+pdfauthor={Corrresponding author: \AuthorC < \EmailC > \AddressC - \WebsiteC },%
+pdfkeywords={\Keywords},%
+pdfsubject={\Acknowledgments}%
+}%
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+
+\usepackage{tikz}%
+%\if 1\Draft
+%\usepackage{setspace}
+%\fi
+% MATHS (AMS)
+%\usepackage{amsmath}
+%%\usepackage{amsfonts}
+%\usepackage{amssymb}
+%\usepackage{amsthm}
+%\usepackage{amsfonts, amssymb, amscd}
+\newcommand{\norm}[1]{|\!| #1 |\!|}
+\newcommand{\dotp}[2]{\langle #1,\,#2\rangle}
+\newcommand{\eqdef}{\ensuremath{\stackrel{\mbox{\upshape\tiny def.}}{=}}}
+\newcommand{\eqset}{\ensuremath{\stackrel{\mbox{\upshape\tiny set}}{=}}}
+\newcommand{\eq}[1]{\begin{equation*}#1\end{equation*}}
+\newcommand{\eql}[1]{\begin{equation}#1\end{equation}}
+\newcommand{\pd}[2]{ \frac{ \partial #1}{\partial #2} }
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\usepackage{siunitx}
+%\renewcommand{\cite}{\citep}%
+\newcommand{\ms}{\si{\milli\second}}%
+\newcommand{\m}{\si{\meter}}%
+\newcommand{\s}{\si{\second}}%
+\usepackage[natbib=true,
+			style=ieee, %numeric-comp,
+      		sortcites=true,
+			abbreviate=true,
+			maxcitenames=2,
+			maxnames = 5,
+%			firstinits=true,
+%			uniquename=init,
+%			sorting=none,
+			doi=false,
+			url=true,
+			isbn=false,
+			eprint=false,
+			texencoding=utf8,
+			bibencoding=latin1,
+			%autocite=superscript,
+			backend=bibtex,
+			%articletitle=false,
+			]{biblatex}%
+\AtEveryBibitem{
+  \clearfield{month}
+  \clearfield{day}
+  \clearfield{url}
+  \clearfield{note}
+  \clearfield{comment}
+%  \clearfield{edition}
+%  \clearfield{publisher}
+}
+\addbibresource{BoutinRuffierPerrinet17spars.bib}%
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+%\graphicspath{{../2016-12-25_DropLets_ms/figures/}}% 
+
+\usepackage{setspace}% http://ctan.org/pkg/setspace
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                mycaption                     %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{myfigure}
+\setcounter{myfigure}{1}
+\renewcommand{\caption}[1]{
+  \vspace{0.5cm}
+  \begin{quote}
+    {{\sc Figure} \arabic{myfigure}: #1}
+  \end{quote}
+  \vspace{1cm}
+  \stepcounter{myfigure}
+}%
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\renewcommand{\titlesize}{\Huge}%
+\title{\Title}
+
+% The following commands can be used to alter the default logo settings
+\leftlogo[1.2]{PACA1-coul_RVB__03__01.jpg}%{  % defines logo to left of title (with scale factor)
+\rightlogo[1.]{amidex_logo_2}  % same but on right
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{
+%{\FirstNameA\ \AuthorA}
+{\color{MidnightBlue} \FirstNameA\ \AuthorA\ } 
+{\color{OliveGreen} \FirstNameB\ \AuthorB\ }
+{\color{MidnightBlue}  \FirstNameC\ \AuthorC\ }
+}
+
+\institute{
+{\color{MidnightBlue} \InstituteA }  --- % \\
+{\color{OliveGreen} \InstituteB }
+}           
+\begin{document}
+\conference{\Conference - \Acknowledgments}
+
+
+           
+% make the title area
+\maketitle
+%\vspace*{-.4cm}
+
+%\vspace*{-.7cm}
+\begin{multicols}{4}
+
+%\begin{abstract}
+%	\begin{multicols}{2}
+%%	\linespread{1.0} 
+%	 \begin{spacing}{.5\baselinestretch} 
+%		{\tiny
+%		%\boldmath
+%			\Abstract
+%		}
+%	\end{spacing}
+%%	\linespread{2.0} 
+%	\end{multicols}
+%\end{abstract}
+
+%%%% Introduction
+\section{Motivation}
+%
+%\ParagIntro
+\SparseCost
+
+\Algorithm
+
+% use section* for acknowledgement
+%\section*{Acknowledgment}
+%\Acknowledgments
+%
+%\appendix
+{\tiny
+\printbibliography
+
+\Links
+}
+\columnbreak
+\section{Learning on natural images}
+\FigureMap
+
+\columnbreak
+\section{Simulating a perturbation}
+\FigureQuant
+
+\columnbreak
+\section{Application to classification}
+\FigureMNIST
+
+% that's all folks
+\end{multicols}
+
+\end{document}
