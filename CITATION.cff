@@ -1,0 +1,50 @@
+cff-version: 1.2.0
+message: If you use this software, please cite the accompanying publication (preferred-citation below).
+type: software
+title: Efficient learning of sparse image representations using homeostatic regulation
+authors:
+- family-names: Boutin
+  given-names: Victor
+- family-names: Ruffier
+  given-names: Franck
+- family-names: Perrinet
+  given-names: Laurent U
+  orcid: https://orcid.org/0000-0002-9536-010X
+repository-code: https://github.com/laurentperrinet/BoutinRuffierPerrinet17spars
+url: https://laurentperrinet.github.io/publication/boutin-ruffier-perrinet-17-spars/
+license: MIT
+keywords:
+- homeostasis
+- metaplasticity
+- sparse-coding
+- spiking-neural-networks
+preferred-citation:
+  type: conference-paper
+  title: Efficient learning of sparse image representations using homeostatic regulation
+  authors:
+  - family-names: Boutin
+    given-names: Victor
+  - family-names: Ruffier
+    given-names: Franck
+  - family-names: Perrinet
+    given-names: Laurent U
+    orcid: https://orcid.org/0000-0002-9536-010X
+  conference:
+    name: SPARS2017, Lisbon
+  year: 2017
+  url: https://laurentperrinet.github.io/publication/boutin-ruffier-perrinet-17-spars/
+references:
+- type: conference-paper
+  title: Efficient learning of sparse image representations using homeostatic regulation
+  authors:
+  - family-names: Boutin
+    given-names: Victor
+  - family-names: Ruffier
+    given-names: Franck
+  - family-names: Perrinet
+    given-names: Laurent U
+    orcid: https://orcid.org/0000-0002-9536-010X
+  conference:
+    name: NeuroFrance 2017, International Conference from the Société des Neurosciences, Bordeaux, France
+  year: 2017
+  url: https://laurentperrinet.github.io/publication/boutin-ruffier-perrinet-17-neurofrance/
